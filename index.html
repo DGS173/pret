@@ -1,0 +1,478 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KREDITAS LT | Financement</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;color:#172638;line-height:1.55}
+header{background:#10243a;color:white}
+.nav{max-width:1120px;margin:auto;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.brand{font-size:23px;font-weight:bold;letter-spacing:2px}
+.brand span{color:#d9ad62}
+.lang-box{display:flex;align-items:center;gap:8px}
+.lang-box label{margin:0;color:white}
+#language{padding:10px;border-radius:7px;border:1px solid #ccc;font-size:14px}
+.hero{background:linear-gradient(112deg,#0a1f33,#174c76);color:white}
+.hero-inner{max-width:1120px;margin:auto;padding:65px 24px;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
+.eyebrow{color:#d9ad62;font-weight:bold;letter-spacing:2px;text-transform:uppercase;font-size:12px}
+h1{font-size:clamp(32px,5vw,52px);line-height:1.1}
+.hero p{color:#dce6ef;font-size:17px}
+.rate-card{background:white;color:#10243a;padding:25px;border-radius:15px}
+.rate-card strong{font-size:48px;color:#174c76;display:block}
+.container{max-width:1120px;margin:auto;padding:50px 24px}
+.section-title{font-size:28px;color:#10243a}
+.sub,.note{color:#64748b}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.panel{border:1px solid #e4eaf0;border-radius:15px;padding:25px;box-shadow:0 8px 28px #132b4010}
+label{display:block;font-weight:650;font-size:14px;margin:15px 0 7px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #cbd5df;border-radius:8px;font:inherit}
+input[type=range]{padding:0;accent-color:#174c76}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.result{background:#10243a;color:white;border-radius:13px;padding:22px}
+.big{font-size:30px;font-weight:bold}
+.result-row{display:flex;justify-content:space-between;gap:10px;border-top:1px solid #ffffff33;padding:10px 0}
+button{background:#d9ad62;color:#14283b;border:0;border-radius:8px;padding:14px 20px;font-weight:bold;cursor:pointer;margin-top:18px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature{background:#f5f8fb;padding:20px;border-radius:12px}
+.feature b{display:block;color:#10243a}
+.disclaimer{background:#fff8e9;border:1px solid #f0d9aa;padding:16px;border-radius:10px;color:#634b22;font-size:13px;margin-top:22px}
+footer{background:#0c1d2e;color:#d8e2eb;padding:30px 24px}
+footer .inner{max-width:1120px;margin:auto}
+footer p{font-size:12px;color:#b8c6d3}
+@media(max-width:760px){
+.hero-inner,.grid{grid-template-columns:1fr}
+.features{grid-template-columns:1fr}
+.two{grid-template-columns:1fr}
+.nav{flex-wrap:wrap}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="nav">
+  <div class="brand">KREDITAS <span>LT</span></div>
+
+  <div class="lang-box">
+    <label for="language">🌐</label>
+    <select id="language" onchange="changeLanguage(this.value)">
+      <option value="fr">🇫🇷 Français</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="lt">🇱🇹 Lietuvių</option>
+      <option value="de">🇩🇪 Deutsch</option>
+      <option value="it">🇮🇹 Italiano</option>
+      <option value="es">🇪🇸 Español</option>
+    </select>
+  </div>
+</div>
+</header>
+
+<section class="hero">
+<div class="hero-inner">
+  <div>
+    <div class="eyebrow" data-i18n="eyebrow">Solutions de financement</div>
+    <h1 data-i18n="title">Préparez votre projet avec une simulation claire.</h1>
+    <p data-i18n="intro">Estimez vos mensualités en fonction du montant et de la durée envisagés, puis transmettez une demande préliminaire à notre équipe.</p>
+  </div>
+
+  <div class="rate-card">
+    <div class="eyebrow" data-i18n="rateLabel">Taux communiqué</div>
+    <strong>2 %</strong>
+    <b data-i18n="perMonth">par mois</b>
+    <p data-i18n="rateInfo">À confirmer dans une offre contractuelle personnalisée. Les frais éventuels doivent être détaillés séparément.</p>
+  </div>
+</div>
+</section>
+
+<main>
+
+<section class="container">
+<h2 class="section-title" data-i18n="simTitle">Simulateur de crédit</h2>
+<p class="sub" data-i18n="simIntro">Ajustez le montant et la durée pour obtenir une estimation indicative.</p>
+
+<div class="grid">
+<div class="panel">
+
+<label for="amount" data-i18n="amountLabel">Montant souhaité (€)</label>
+<input id="amount" type="number" min="1000" max="500000" step="500" value="10000">
+<input id="amountRange" type="range" min="1000" max="500000" step="500" value="10000">
+
+<div class="two">
+<div>
+<label for="term" data-i18n="termLabel">Durée (mois)</label>
+<select id="term">
+<option>12</option><option>24</option><option selected>36</option>
+<option>48</option><option>60</option><option>72</option>
+<option>84</option><option>120</option>
+</select>
+</div>
+<div>
+<label data-i18n="rateMonthly">Taux mensuel</label>
+<input value="2 %" readonly>
+</div>
+</div>
+
+<button type="button" onclick="calculate()" data-i18n="calculate">Calculer ma mensualité</button>
+</div>
+
+<div class="result">
+<small data-i18n="monthlyPayment">Mensualité estimée</small>
+<div class="big" id="payment">—</div>
+
+<div class="result-row">
+<span data-i18n="borrowed">Montant emprunté</span>
+<b id="principal">—</b>
+</div>
+<div class="result-row">
+<span data-i18n="totalCost">Coût total estimé</span>
+<b id="total">—</b>
+</div>
+<div class="result-row">
+<span data-i18n="interest">Intérêts estimés</span>
+<b id="interest">—</b>
+</div>
+<small data-i18n="calculationNote">Calcul indicatif hors frais, assurance et taxes éventuels.</small>
+</div>
+</div>
+
+<div class="disclaimer" data-i18n="disclaimer">
+Le taux de 2 % par mois correspond à 24 % nominal par an, soit environ 26,82 % effectif annuel si les intérêts sont capitalisés mensuellement. Le simulateur ne constitue ni une offre de crédit ni une promesse d'acceptation. Le TAEG et les frais doivent être vérifiés conformément aux règles applicables.
+</div>
+</section>
+
+<section class="container" style="padding-top:0">
+<h2 class="section-title" data-i18n="formTitle">Envoyer une demande préliminaire</h2>
+<p class="sub" data-i18n="formIntro">Les informations ci-dessous servent uniquement à être recontacté.</p>
+
+<div class="panel">
+<form id="requestForm">
+
+<div class="two">
+<div>
+<label for="name" data-i18n="nameLabel">Nom et prénom</label>
+<input id="name" required autocomplete="name">
+</div>
+<div>
+<label for="email" data-i18n="emailLabel">Adresse e-mail</label>
+<input id="email" type="email" required autocomplete="email">
+</div>
+</div>
+
+<div class="two">
+<div>
+<label for="phone" data-i18n="phoneLabel">Téléphone</label>
+<input id="phone" type="tel" required>
+</div>
+<div>
+<label for="country" data-i18n="countryLabel">Pays de résidence</label>
+<input id="country" required>
+</div>
+</div>
+
+<div class="two">
+<div>
+<label for="purpose" data-i18n="purposeLabel">Objet du financement</label>
+<select id="purpose">
+<option value="personal" data-i18n="personal">Projet personnel</option>
+<option value="housing" data-i18n="housing">Travaux / logement</option>
+<option value="vehicle" data-i18n="vehicle">Véhicule</option>
+<option value="business" data-i18n="business">Activité professionnelle</option>
+<option value="other" data-i18n="other">Autre</option>
+</select>
+</div>
+<div>
+<label for="requested" data-i18n="requestedLabel">Montant demandé (€)</label>
+<input id="requested" type="number" min="1000" max="500000" value="10000" required>
+</div>
+</div>
+
+<label for="message" data-i18n="messageLabel">Informations complémentaires</label>
+<textarea id="message" rows="3"></textarea>
+
+<label style="display:flex;gap:10px;align-items:flex-start;font-weight:400">
+<input id="consent" type="checkbox" required style="width:auto;margin-top:4px">
+<span data-i18n="consent">J'accepte que mes coordonnées soient utilisées pour répondre à ma demande. Je comprends qu'il ne s'agit pas d'une acceptation de crédit.</span>
+</label>
+
+<button type="submit" data-i18n="submit">Préparer ma demande par e-mail</button>
+
+<p class="note" data-i18n="emailNote">Ce formulaire ouvre votre application e-mail avec un message prérempli. Vous devez vérifier puis envoyer le message.</p>
+
+</form>
+</div>
+</section>
+
+<section class="container" style="padding-top:0">
+<h2 class="section-title" data-i18n="stepsTitle">Un parcours simple et transparent</h2>
+
+<div class="features">
+<div class="feature">
+<b data-i18n="step1Title">1. Simulation</b>
+<span data-i18n="step1">Estimez une mensualité avant de déposer une demande.</span>
+</div>
+<div class="feature">
+<b data-i18n="step2Title">2. Étude</b>
+<span data-i18n="step2">Une demande préliminaire peut être examinée, sans garantie d'approbation.</span>
+</div>
+<div class="feature">
+<b data-i18n="step3Title">3. Offre écrite</b>
+<span data-i18n="step3">Les conditions complètes doivent être remises avant tout engagement.</span>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="inner">
+<b>KREDITAS LT</b>
+<p data-i18n="legal1">Avant publication, renseignez la dénomination sociale exacte, le numéro d'immatriculation, l'adresse du siège, les coordonnées de contact et les références d'agrément applicables.</p>
+<p data-i18n="legal2">Ne présentez pas le service comme autorisé dans tous les pays européens sans vérification pays par pays.</p>
+<p>© KREDITAS LT — <span data-i18n="demo">Maquette de démonstration.</span></p>
+</div>
+</footer>
+
+<script>
+const translations = {
+fr: {
+eyebrow:"Solutions de financement",
+title:"Préparez votre projet avec une simulation claire.",
+intro:"Estimez vos mensualités en fonction du montant et de la durée envisagés, puis transmettez une demande préliminaire à notre équipe.",
+rateLabel:"Taux communiqué",perMonth:"par mois",
+rateInfo:"À confirmer dans une offre contractuelle personnalisée. Les frais éventuels doivent être détaillés séparément.",
+simTitle:"Simulateur de crédit",simIntro:"Ajustez le montant et la durée pour obtenir une estimation indicative.",
+amountLabel:"Montant souhaité (€)",termLabel:"Durée (mois)",rateMonthly:"Taux mensuel",
+calculate:"Calculer ma mensualité",monthlyPayment:"Mensualité estimée",
+borrowed:"Montant emprunté",totalCost:"Coût total estimé",interest:"Intérêts estimés",
+calculationNote:"Calcul indicatif hors frais, assurance et taxes éventuels.",
+disclaimer:"Le taux de 2 % par mois correspond à 24 % nominal par an, soit environ 26,82 % effectif annuel si les intérêts sont capitalisés mensuellement. Le simulateur ne constitue ni une offre de crédit ni une promesse d'acceptation. Le TAEG et les frais doivent être vérifiés conformément aux règles applicables.",
+formTitle:"Envoyer une demande préliminaire",formIntro:"Les informations ci-dessous servent uniquement à être recontacté.",
+nameLabel:"Nom et prénom",emailLabel:"Adresse e-mail",phoneLabel:"Téléphone",countryLabel:"Pays de résidence",
+purposeLabel:"Objet du financement",personal:"Projet personnel",housing:"Travaux / logement",vehicle:"Véhicule",business:"Activité professionnelle",other:"Autre",
+requestedLabel:"Montant demandé (€)",messageLabel:"Informations complémentaires",
+consent:"J'accepte que mes coordonnées soient utilisées pour répondre à ma demande. Je comprends qu'il ne s'agit pas d'une acceptation de crédit.",
+submit:"Préparer ma demande par e-mail",emailNote:"Ce formulaire ouvre votre application e-mail avec un message prérempli. Vous devez vérifier puis envoyer le message.",
+stepsTitle:"Un parcours simple et transparent",step1Title:"1. Simulation",step1:"Estimez une mensualité avant de déposer une demande.",
+step2Title:"2. Étude",step2:"Une demande préliminaire peut être examinée, sans garantie d'approbation.",
+step3Title:"3. Offre écrite",step3:"Les conditions complètes doivent être remises avant tout engagement.",
+legal1:"Avant publication, renseignez la dénomination sociale exacte, le numéro d'immatriculation, l'adresse du siège, les coordonnées de contact et les références d'agrément applicables.",
+legal2:"Ne présentez pas le service comme autorisé dans tous les pays européens sans vérification pays par pays.",
+demo:"Maquette de démonstration."
+},
+en: {
+eyebrow:"Financing solutions",title:"Plan your project with a clear estimate.",
+intro:"Estimate your monthly payments based on the amount and term, then send a preliminary enquiry to our team.",
+rateLabel:"Indicative rate",perMonth:"per month",rateInfo:"To be confirmed in an individual written agreement. Any fees must be listed separately.",
+simTitle:"Loan calculator",simIntro:"Adjust the amount and term to obtain an indicative estimate.",
+amountLabel:"Desired amount (€)",termLabel:"Term (months)",rateMonthly:"Monthly rate",
+calculate:"Calculate my payment",monthlyPayment:"Estimated monthly payment",
+borrowed:"Amount borrowed",totalCost:"Estimated total cost",interest:"Estimated interest",
+calculationNote:"Indicative calculation excluding possible fees, insurance and taxes.",
+disclaimer:"A rate of 2% per month corresponds to a nominal 24% per year, or approximately 26.82% effective annually if interest is compounded monthly. This calculator is not a credit offer or a promise of approval. APR and fees must be checked under applicable rules.",
+formTitle:"Send a preliminary enquiry",formIntro:"The information below is used only to contact you.",
+nameLabel:"Full name",emailLabel:"Email address",phoneLabel:"Telephone",countryLabel:"Country of residence",
+purposeLabel:"Purpose of financing",personal:"Personal project",housing:"Home / renovations",vehicle:"Vehicle",business:"Business activity",other:"Other",
+requestedLabel:"Requested amount (€)",messageLabel:"Additional information",
+consent:"I agree that my contact details may be used to respond to my enquiry. I understand this is not a credit approval.",
+submit:"Prepare my email enquiry",emailNote:"This form opens your email application with a pre-filled message. Please review and send it.",
+stepsTitle:"A simple and transparent process",step1Title:"1. Estimate",step1:"Estimate a monthly payment before applying.",
+step2Title:"2. Review",step2:"A preliminary enquiry may be reviewed, without any guarantee of approval.",
+step3Title:"3. Written offer",step3:"Full terms must be provided before any commitment.",
+legal1:"Before publication, provide the exact legal company name, registration number, registered address, contact details and applicable licence information.",
+legal2:"Do not claim authorisation in all European countries without checking each country separately.",
+demo:"Demonstration version."
+},
+lt: {
+eyebrow:"Finansavimo sprendimai",title:"Planuokite savo projektą naudodamiesi aiškia skaičiuokle.",
+intro:"Apskaičiuokite preliminarias mėnesines įmokas pagal sumą ir terminą, tada pateikite preliminarią užklausą.",
+rateLabel:"Nurodyta palūkanų norma",perMonth:"per mėnesį",rateInfo:"Turi būti patvirtinta individualioje rašytinėje sutartyje. Visi mokesčiai turi būti nurodyti atskirai.",
+simTitle:"Paskolos skaičiuoklė",simIntro:"Pasirinkite sumą ir terminą preliminariam skaičiavimui.",
+amountLabel:"Pageidaujama suma (€)",termLabel:"Terminas (mėnesiais)",rateMonthly:"Mėnesio norma",
+calculate:"Apskaičiuoti įmoką",monthlyPayment:"Preliminari mėnesio įmoka",
+borrowed:"Pasiskolinta suma",totalCost:"Preliminari bendra suma",interest:"Preliminarios palūkanos",
+calculationNote:"Preliminarus skaičiavimas, neįskaitant galimų mokesčių, draudimo ir mokesčių valstybei.",
+disclaimer:"2 % mėnesinė norma atitinka 24 % nominalią metinę normą arba apie 26,82 % efektyvią metinę normą, jei palūkanos kapitalizuojamos kas mėnesį. Skaičiuoklė nėra paskolos pasiūlymas ar patvirtinimo garantija. BVKKMN ir mokesčiai turi būti patikrinti pagal taikomas taisykles.",
+formTitle:"Pateikti preliminarią užklausą",formIntro:"Toliau pateikta informacija naudojama tik susisiekti su jumis.",
+nameLabel:"Vardas ir pavardė",emailLabel:"El. pašto adresas",phoneLabel:"Telefonas",countryLabel:"Gyvenamoji šalis",
+purposeLabel:"Finansavimo tikslas",personal:"Asmeninis projektas",housing:"Būstas / remontas",vehicle:"Transporto priemonė",business:"Verslo veikla",other:"Kita",
+requestedLabel:"Pageidaujama suma (€)",messageLabel:"Papildoma informacija",
+consent:"Sutinku, kad mano kontaktiniai duomenys būtų naudojami atsakant į užklausą. Suprantu, kad tai nėra paskolos patvirtinimas.",
+submit:"Paruošti užklausą el. paštu",emailNote:"Forma atidarys jūsų el. pašto programą su paruoštu laišku. Patikrinkite ir išsiųskite jį.",
+stepsTitle:"Paprastas ir skaidrus procesas",step1Title:"1. Skaičiavimas",step1:"Prieš pateikdami paraišką įvertinkite mėnesio įmoką.",
+step2Title:"2. Vertinimas",step2:"Preliminari užklausa gali būti įvertinta, tačiau patvirtinimas negarantuojamas.",
+step3Title:"3. Rašytinis pasiūlymas",step3:"Prieš įsipareigojant turi būti pateiktos visos sąlygos.",
+legal1:"Prieš skelbdami svetainę nurodykite tikslų įmonės pavadinimą, registracijos numerį, adresą, kontaktus ir taikomus licencijos duomenis.",
+legal2:"Netvirtinkite, kad paslaugos leidžiamos visose Europos šalyse, nepatikrinę kiekvienos šalies atskirai.",
+demo:"Demonstracinė versija."
+},
+de: {
+eyebrow:"Finanzierungslösungen",title:"Planen Sie Ihr Vorhaben mit einer klaren Berechnung.",
+intro:"Schätzen Sie Ihre monatlichen Raten anhand des Betrags und der Laufzeit und senden Sie anschließend eine unverbindliche Anfrage.",
+rateLabel:"Angegebener Zinssatz",perMonth:"pro Monat",rateInfo:"Muss in einem individuellen schriftlichen Vertrag bestätigt werden. Eventuelle Gebühren sind gesondert aufzuführen.",
+simTitle:"Kreditrechner",simIntro:"Passen Sie Betrag und Laufzeit für eine unverbindliche Schätzung an.",
+amountLabel:"Gewünschter Betrag (€)",termLabel:"Laufzeit (Monate)",rateMonthly:"Monatlicher Zinssatz",
+calculate:"Monatsrate berechnen",monthlyPayment:"Geschätzte Monatsrate",
+borrowed:"Kreditbetrag",totalCost:"Geschätzte Gesamtkosten",interest:"Geschätzte Zinsen",
+calculationNote:"Unverbindliche Berechnung ohne mögliche Gebühren, Versicherung und Steuern.",
+disclaimer:"Ein Zinssatz von 2 % pro Monat entspricht nominal 24 % pro Jahr bzw. etwa 26,82 % effektiv pro Jahr bei monatlicher Kapitalisierung. Dieser Rechner ist weder ein Kreditangebot noch eine Zusage. Effektiver Jahreszins und Gebühren müssen gemäß den geltenden Vorschriften geprüft werden.",
+formTitle:"Unverbindliche Anfrage senden",formIntro:"Die folgenden Angaben dienen ausschließlich der Kontaktaufnahme.",
+nameLabel:"Vor- und Nachname",emailLabel:"E-Mail-Adresse",phoneLabel:"Telefon",countryLabel:"Wohnsitzland",
+purposeLabel:"Finanzierungszweck",personal:"Privates Vorhaben",housing:"Wohnen / Renovierung",vehicle:"Fahrzeug",business:"Geschäftliche Tätigkeit",other:"Sonstiges",
+requestedLabel:"Gewünschter Betrag (€)",messageLabel:"Weitere Informationen",
+consent:"Ich bin damit einverstanden, dass meine Kontaktdaten zur Beantwortung meiner Anfrage verwendet werden. Dies ist keine Kreditzusage.",
+submit:"E-Mail-Anfrage vorbereiten",emailNote:"Dieses Formular öffnet Ihr E-Mail-Programm mit einer vorbereiteten Nachricht. Bitte prüfen und senden Sie diese.",
+stepsTitle:"Ein einfacher und transparenter Ablauf",step1Title:"1. Berechnung",step1:"Schätzen Sie Ihre Monatsrate vor einer Anfrage.",
+step2Title:"2. Prüfung",step2:"Eine unverbindliche Anfrage kann geprüft werden. Eine Genehmigung ist nicht garantiert.",
+step3Title:"3. Schriftliches Angebot",step3:"Vor einer Verpflichtung müssen alle Bedingungen schriftlich vorliegen.",
+legal1:"Geben Sie vor der Veröffentlichung den vollständigen Firmennamen, die Registrierungsnummer, die Geschäftsadresse, Kontaktdaten und die geltenden Zulassungsangaben an.",
+legal2:"Behaupten Sie keine Zulassung in allen europäischen Ländern, ohne jedes Land einzeln zu prüfen.",
+demo:"Demonstrationsversion."
+},
+it: {
+eyebrow:"Soluzioni di finanziamento",title:"Pianifica il tuo progetto con una simulazione chiara.",
+intro:"Stima le rate mensili in base all'importo e alla durata, quindi invia una richiesta preliminare al nostro team.",
+rateLabel:"Tasso indicativo",perMonth:"al mese",rateInfo:"Da confermare in un accordo scritto personalizzato. Eventuali costi devono essere indicati separatamente.",
+simTitle:"Simulatore di credito",simIntro:"Modifica importo e durata per ottenere una stima indicativa.",
+amountLabel:"Importo desiderato (€)",termLabel:"Durata (mesi)",rateMonthly:"Tasso mensile",
+calculate:"Calcola la rata",monthlyPayment:"Rata mensile stimata",
+borrowed:"Importo preso in prestito",totalCost:"Costo totale stimato",interest:"Interessi stimati",
+calculationNote:"Calcolo indicativo esclusi eventuali costi, assicurazione e imposte.",
+disclaimer:"Un tasso del 2% al mese corrisponde al 24% nominale annuo, ovvero circa il 26,82% effettivo annuo se gli interessi vengono capitalizzati mensilmente. Questo simulatore non costituisce un'offerta di credito né una garanzia di approvazione. TAEG e costi devono essere verificati secondo le norme applicabili.",
+formTitle:"Invia una richiesta preliminare",formIntro:"Le informazioni seguenti servono esclusivamente per ricontattarti.",
+nameLabel:"Nome e cognome",emailLabel:"Indirizzo e-mail",phoneLabel:"Telefono",countryLabel:"Paese di residenza",
+purposeLabel:"Finalità del finanziamento",personal:"Progetto personale",housing:"Casa / ristrutturazione",vehicle:"Veicolo",business:"Attività professionale",other:"Altro",
+requestedLabel:"Importo richiesto (€)",messageLabel:"Informazioni aggiuntive",
+consent:"Acconsento all'utilizzo dei miei recapiti per rispondere alla richiesta. Comprendo che ciò non costituisce approvazione del credito.",
+submit:"Prepara la richiesta via e-mail",emailNote:"Questo modulo apre il programma di posta con un messaggio precompilato. Controlla e invia il messaggio.",
+stepsTitle:"Un processo semplice e trasparente",step1Title:"1. Simulazione",step1:"Stima la rata mensile prima di inviare una richiesta.",
+step2Title:"2. Valutazione",step2:"La richiesta preliminare può essere esaminata, senza garanzia di approvazione.",
+step3Title:"3. Offerta scritta",step3:"Tutte le condizioni devono essere fornite prima di qualsiasi impegno.",
+legal1:"Prima della pubblicazione, inserisci la ragione sociale esatta, il numero di registrazione, la sede legale, i contatti e gli estremi delle autorizzazioni applicabili.",
+legal2:"Non dichiarare di essere autorizzato in tutti i paesi europei senza verificare ogni paese separatamente.",
+demo:"Versione dimostrativa."
+},
+es: {
+eyebrow:"Soluciones de financiación",title:"Planifique su proyecto con una simulación clara.",
+intro:"Calcule sus cuotas mensuales según el importe y el plazo y envíe una consulta preliminar a nuestro equipo.",
+rateLabel:"Tipo de interés indicado",perMonth:"al mes",rateInfo:"Debe confirmarse en un acuerdo escrito personalizado. Los posibles gastos deben detallarse por separado.",
+simTitle:"Simulador de crédito",simIntro:"Ajuste el importe y el plazo para obtener una estimación orientativa.",
+amountLabel:"Importe deseado (€)",termLabel:"Plazo (meses)",rateMonthly:"Tipo mensual",
+calculate:"Calcular mi cuota",monthlyPayment:"Cuota mensual estimada",
+borrowed:"Importe prestado",totalCost:"Coste total estimado",interest:"Intereses estimados",
+calculationNote:"Cálculo orientativo sin incluir posibles gastos, seguros ni impuestos.",
+disclaimer:"Un tipo del 2 % mensual equivale al 24 % nominal anual, o aproximadamente al 26,82 % efectivo anual si los intereses se capitalizan mensualmente. Este simulador no constituye una oferta de crédito ni una promesa de aprobación. La TAE y los gastos deben comprobarse conforme a la normativa aplicable.",
+formTitle:"Enviar una consulta preliminar",formIntro:"La siguiente información se utiliza únicamente para ponerse en contacto con usted.",
+nameLabel:"Nombre y apellidos",emailLabel:"Correo electrónico",phoneLabel:"Teléfono",countryLabel:"País de residencia",
+purposeLabel:"Finalidad de la financiación",personal:"Proyecto personal",housing:"Vivienda / reformas",vehicle:"Vehículo",business:"Actividad profesional",other:"Otro",
+requestedLabel:"Importe solicitado (€)",messageLabel:"Información adicional",
+consent:"Acepto que mis datos de contacto se utilicen para responder a mi consulta. Entiendo que esto no constituye una aprobación del crédito.",
+submit:"Preparar consulta por correo electrónico",emailNote:"Este formulario abre su aplicación de correo con un mensaje preparado. Revíselo y envíelo.",
+stepsTitle:"Un proceso sencillo y transparente",step1Title:"1. Simulación",step1:"Calcule una cuota mensual antes de presentar una solicitud.",
+step2Title:"2. Evaluación",step2:"La consulta preliminar puede ser evaluada, sin garantía de aprobación.",
+step3Title:"3. Oferta escrita",step3:"Las condiciones completas deben entregarse antes de cualquier compromiso.",
+legal1:"Antes de publicar, indique la razón social exacta, el número de registro, la dirección social, los datos de contacto y las autorizaciones aplicables.",
+legal2:"No afirme estar autorizado en todos los países europeos sin comprobar cada país por separado.",
+demo:"Versión de demostración."
+}
+};
+
+function changeLanguage(lang){
+  const t=translations[lang] || translations.fr;
+  document.documentElement.lang=lang;
+
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key=el.getAttribute("data-i18n");
+    if(t[key]) el.textContent=t[key];
+  });
+
+  localStorage.setItem("kreditas_language",lang);
+}
+
+const currencyLocales={
+fr:"fr-FR",en:"en-IE",lt:"lt-LT",de:"de-DE",it:"it-IT",es:"es-ES"
+};
+
+function money(n){
+  const lang=document.getElementById("language").value;
+  return new Intl.NumberFormat(currencyLocales[lang] || "fr-FR",{
+    style:"currency",currency:"EUR",maximumFractionDigits:2
+  }).format(n);
+}
+
+function calculate(){
+  const amount=document.getElementById("amount");
+  const range=document.getElementById("amountRange");
+
+  let p=Number(amount.value);
+  if(!Number.isFinite(p))p=1000;
+  p=Math.min(500000,Math.max(1000,p));
+
+  amount.value=p;
+  range.value=p;
+
+  const n=Number(document.getElementById("term").value);
+  const r=0.02;
+  const monthly=p*r/(1-Math.pow(1+r,-n));
+  const total=monthly*n;
+
+  document.getElementById("payment").textContent=money(monthly);
+  document.getElementById("principal").textContent=money(p);
+  document.getElementById("total").textContent=money(total);
+  document.getElementById("interest").textContent=money(total-p);
+}
+
+document.getElementById("amount").addEventListener("input",()=>{
+  document.getElementById("amountRange").value=document.getElementById("amount").value;
+  calculate();
+});
+
+document.getElementById("amountRange").addEventListener("input",()=>{
+  document.getElementById("amount").value=document.getElementById("amountRange").value;
+  calculate();
+});
+
+document.getElementById("term").addEventListener("change",calculate);
+
+document.getElementById("requestForm").addEventListener("submit",function(e){
+  e.preventDefault();
+
+  const val=id=>document.getElementById(id).value.trim();
+
+  const purpose=document.getElementById("purpose");
+  const purposeText=purpose.options[purpose.selectedIndex].text;
+
+  const body=[
+    "Nouvelle demande préliminaire — KREDITAS LT",
+    "",
+    "Nom : "+val("name"),
+    "E-mail : "+val("email"),
+    "Téléphone : "+val("phone"),
+    "Pays : "+val("country"),
+    "Objet : "+purposeText,
+    "Montant demandé : "+val("requested")+" EUR",
+    "Simulation : "+val("amount")+" EUR sur "+val("term")+" mois au taux mensuel indicatif de 2 %",
+    "Informations complémentaires : "+val("message"),
+    "",
+    "Consentement donné pour être recontacté.",
+    "Cette demande ne constitue pas une acceptation de crédit."
+  ].join("\n");
+
+  const subject="Demande de financement — KREDITAS LT";
+
+  window.location.href="mailto:lapatience195@gmail.com?subject="+
+    encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+});
+
+const savedLanguage=localStorage.getItem("kreditas_language") || "fr";
+document.getElementById("language").value=savedLanguage;
+changeLanguage(savedLanguage);
+calculate();
+</script>
+
+</body>
+</html>
