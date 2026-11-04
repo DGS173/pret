@@ -1,0 +1,55 @@
+{
+  "name": "@nowpaymentsio/nowpayments-sdk-nodejs",
+  "version": "0.3.0",
+  "description": "Scenario-first Node.js SDK for NOWPayments hosted checkout and crypto payments.",
+  "homepage": "https://github.com/NowPaymentsIO/nowpayments-sdk-nodejs#nowpayments-nodejs-sdk",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NowPaymentsIO/nowpayments-sdk-nodejs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NowPaymentsIO/nowpayments-sdk-nodejs/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "examples",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test test/*.test.js",
+    "prepack": "npm run build && npm test",
+    "test:live:payouts": "npm run test:live:payouts:readonly",
+    "test:live:payouts:readonly": "npm run build && node --test test/live/mass-payouts.readonly.live.test.js",
+    "test:live:payouts:auto-2fa": "npm run build && node --test test/live/mass-payouts.auto-2fa.live.test.js",
+    "test:live:payouts:manual-2fa": "npm run build && node --test test/live/mass-payouts.manual-2fa.live.test.js",
+    "test:live:payouts:raw-write": "npm run build && node --test test/live/mass-payouts.raw-write.live.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "nowpayments",
+    "payments",
+    "payouts",
+    "mass-payouts",
+    "crypto",
+    "sdk",
+    "checkout",
+    "2fa",
+    "totp",
+    "nodejs"
+  ],
+  "license": "MIT"
+}
